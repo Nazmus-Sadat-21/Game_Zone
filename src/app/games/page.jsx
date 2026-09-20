@@ -1,8 +1,7 @@
 import React from "react";
 import GameCard from './../../Components/GameCard';
-
 const GameData = async () => {
-  const res = await fetch("http://localhost:3000/GameData.json", {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/GameData.json`, {
     cache: "no-store", // Prevents stale caching during development
   });
 
