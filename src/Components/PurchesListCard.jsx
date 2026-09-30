@@ -2,6 +2,9 @@ import Image from "next/image";
 import React from "react";
 import BuyDeleteButton from "./Buttons/BuyDeleteButton";
 
+
+
+
 const PurchesListCard = ({ game, onDelete }) => {
   const {
     gameId,
