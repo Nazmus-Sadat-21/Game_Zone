@@ -111,7 +111,7 @@ export default function Navbar() {
           
           {/* Join / Sign In Button */}
           <Link
-            href="/login"
+            href="/auth/SignIn"
             className="rounded-xl bg-gradient-to-r from-cyan-500 to-fuchsia-600 px-5 py-2.5 text-xs sm:text-sm font-bold text-white shadow-md shadow-cyan-500/20 transition-all duration-300 hover:scale-105 hover:shadow-fuchsia-500/30 active:scale-95"
           >
             Sign In

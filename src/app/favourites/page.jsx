@@ -6,7 +6,7 @@ import React, { useContext } from "react";
 
 const Page = () => {
   // Destructure fav and your remove function (or setFav) from GameContext
-  const { fav} = useContext(GameContext);
+  const { fav } = useContext(GameContext);
 
   // Fallback state if favorites list is empty
   if (!fav || fav.length === 0) {
