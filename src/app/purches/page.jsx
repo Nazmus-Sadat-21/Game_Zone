@@ -1,11 +1,19 @@
 "use client";
-
 import ListCard from "@/Components/ListCard";
 import PurchesListCard from "@/Components/PurchesListCard";
 import { GameContext } from "@/context/GameContext";
 import React, { useContext } from "react";
+import SignIn from "../(auth)/SignIn/page";
+import { useSession } from "@/lib/auth-client";
+import { toast } from "react-toastify";
 const Page = () => {
+  const { data: session } = useSession();
   const { buy } = useContext(GameContext);
+
+  if (session?.user==null) {
+    return <SignIn></SignIn>
+  }
+
   if (buy.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center p-8 text-center text-gray-500 border border-dashed rounded-xl my-6 h-full">
@@ -18,9 +26,9 @@ const Page = () => {
   }
   return (
     <div className="w-full px-4 sm:px-8 lg:px-12 py-6 flex flex-col gap-4">
-        {
-            buy.map((game, ind) => <PurchesListCard key={ind} game={game}></PurchesListCard>)
-        }
+      {buy.map((game, ind) => (
+        <PurchesListCard key={ind} game={game}></PurchesListCard>
+      ))}
     </div>
   );
 };

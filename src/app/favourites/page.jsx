@@ -2,11 +2,14 @@
 
 import ListCard from "@/Components/ListCard";
 import { GameContext } from "@/context/GameContext";
+
 import React, { useContext } from "react";
+import SignIn from "../(auth)/SignIn/page";
 
 const Page = () => {
   // Destructure fav and your remove function (or setFav) from GameContext
   const { fav } = useContext(GameContext);
+ 
 
   // Fallback state if favorites list is empty
   if (!fav || fav.length === 0) {
