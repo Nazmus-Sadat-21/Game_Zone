@@ -3,12 +3,12 @@ import { signIn, signUp } from "@/lib/auth-client";
 import Link from "next/link";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
-import { useRouter } from "next/navigation";
+
 
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
-  const router = useRouter();
+
 
   const [formData, setFormData] = useState({
     name: "",
