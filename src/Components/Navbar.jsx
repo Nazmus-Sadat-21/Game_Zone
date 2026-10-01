@@ -168,7 +168,7 @@ export default function Navbar() {
                     Welcome
                   </span>
                   <span className="max-w-[120px] truncate text-xs sm:text-sm font-semibold text-slate-100">
-                    {session.user.name}
+                    {session?.user.name}
                   </span>
                 </div>
               </div>

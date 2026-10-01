@@ -10,9 +10,9 @@ const Page = () => {
   const { data: session } = useSession();
   const { buy } = useContext(GameContext);
 
-  if (session?.user==null) {
-    return <SignIn></SignIn>
-  }
+  // if (session?.user==null) {
+  //   return <SignIn></SignIn>
+  // }
 
   if (buy.length === 0) {
     return (

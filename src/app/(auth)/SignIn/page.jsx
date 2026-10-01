@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 
 const SignIn = () => {
   const [showPassword, setShowPassword] = useState(false);
+   
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -25,6 +26,7 @@ const SignIn = () => {
     });
     if (data) {
       toast.success(`SignIn successfully! welcome ${data.user.name}`);
+      
     }
     if (error) {
       console.error("Sign in error:", error);
@@ -168,3 +170,7 @@ const SignIn = () => {
 };
 
 export default SignIn;
+
+
+
+

@@ -1,12 +1,14 @@
 "use client";
-import { signUp } from "@/lib/auth-client";
+import { signIn, signUp } from "@/lib/auth-client";
 import Link from "next/link";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
+  const router = useRouter();
 
   const [formData, setFormData] = useState({
     name: "",
@@ -36,7 +38,13 @@ const SignUp = () => {
       return toast.error(error.message || "Failed to sign up");
     }
     toast.success("Account created successfully!");
-    console.log("Success data:", data);
+    return router.push("/SignIn");
+  };
+
+  const handlegoogle = async () => {
+    const data = await signIn.social({
+      provider: "google",
+    });
   };
 
   return (
@@ -229,6 +237,7 @@ const SignUp = () => {
           </div>
 
           <button
+            onClick={handlegoogle}
             type="button"
             className="w-full mt-3 flex items-center justify-center gap-3 py-2.5 px-4 bg-slate-900/90 hover:bg-slate-800 text-slate-200 border border-slate-800 hover:border-slate-700 font-semibold text-sm rounded-xl transition-all duration-200 active:scale-[0.98] cursor-pointer"
           >
