@@ -38,7 +38,7 @@ const SignUp = () => {
       return toast.error(error.message || "Failed to sign up");
     }
     toast.success("Account created successfully!");
-    return router.push("/SignIn");
+    
   };
 
   const handlegoogle = async () => {
@@ -222,7 +222,7 @@ const SignUp = () => {
             type="submit"
             className="w-full mt-2 py-3 px-4 bg-gradient-to-r from-cyan-500 via-indigo-600 to-purple-600 text-white font-bold text-sm rounded-xl shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/35 hover:opacity-95 active:scale-[0.98] transition-all duration-200 cursor-pointer"
           >
-            <Link href="/SignIn">Sign Up</Link>
+            <Link href="/">Sign Up</Link>
           </button>
         </form>
 
@@ -268,7 +268,7 @@ const SignUp = () => {
           <p>
             Already have an account?{" "}
             <Link
-              href="/"
+              href="/SignIn"
               className="text-cyan-400 hover:text-cyan-300 font-semibold transition-colors hover:underline cursor-pointer"
             >
               Sign In
