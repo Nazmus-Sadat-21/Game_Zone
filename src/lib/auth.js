@@ -13,7 +13,7 @@ export const auth = betterAuth({
   socialProviders: {
     google: {
       clientId: process.env.BETTER_AUTH_GOOGLE_CLIENT_ID,
-      clientSecret: process.env.BETTER_AUTH_GOOGLE_SECERET,
+      clientSecret: process.env.BETTER_AUTH_GOOGLE_SECRET,
     },
   },
   account: {
@@ -21,7 +21,9 @@ export const auth = betterAuth({
       enabled: true,
       trustedProviders: ["google"],
     },
+    skipStateCookieCheck: true,
   },
+  
   database: mongodbAdapter(db, {
     // Optional: if you don't provide a client, database transactions won't be enabled.
     client,

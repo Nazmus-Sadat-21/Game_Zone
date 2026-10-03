@@ -1,12 +1,17 @@
 "use client";
-import { signIn, signUp } from "@/lib/auth-client";
+
+import { signIn, signUp, useSession } from "@/lib/auth-client";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 
 const SignUp = () => {
+  const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const { data: session } = useSession();
 
   const [formData, setFormData] = useState({
     name: "",
@@ -25,23 +30,36 @@ const SignUp = () => {
       return toast.error("Please check your password correctly");
     }
 
+    setLoading(true);
+
     const { data, error } = await signUp.email({
       name: formData.name,
       email: formData.email,
       password: formData.password,
     });
 
+    setLoading(false);
+
     if (error) {
       console.error("Sign up error:", error);
       return toast.error(error.message || "Failed to sign up");
     }
+
     toast.success("Account created successfully!");
+    
+    // Redirect user to home page after successful sign up
+    router.push("/");
   };
 
-  const handlegoogle = async () => {
-    const data = await signIn.social({
-      provider: "google",
-    });
+  const handleGoogle = async () => {
+    try {
+      await signIn.social({
+        provider: "google",
+        callbackUrl: "/", // Redirect path after successful Google authentication
+      });
+    } catch (error) {
+      console.error("Google sign-in failed:", error);
+    }
   };
 
   return (
@@ -140,7 +158,7 @@ const SignUp = () => {
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      d="M2.036 123c1.274 4.057 5.064 7 9.542 7 4.477 0 8.268-2.943 9.542-7-1.274-4.057-5.064-7-9.542-7-4.478 0-8.268 2.943-9.542 7z"
+                      d="M2.036 12c1.274 4.057 5.064 7 9.542 7 4.477 0 8.268-2.943 9.542-7-1.274-4.057-5.064-7-9.542-7-4.478 0-8.268 2.943-9.542 7z"
                     />
                     <path
                       strokeLinecap="round"
@@ -199,7 +217,7 @@ const SignUp = () => {
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      d="M2.036 123c1.274 4.057 5.064 7 9.542 7 4.477 0 8.268-2.943 9.542-7-1.274-4.057-5.064-7-9.542-7-4.478 0-8.268 2.943-9.542 7z"
+                      d="M2.036 12c1.274 4.057 5.064 7 9.542 7 4.477 0 8.268-2.943 9.542-7-1.274-4.057-5.064-7-9.542-7-4.478 0-8.268 2.943-9.542 7z"
                     />
                     <path
                       strokeLinecap="round"
@@ -213,13 +231,12 @@ const SignUp = () => {
           </div>
 
           {/* Signup Button */}
-
           <button
-            onClick={handleSubmit}
             type="submit"
-            className="w-full mt-2 py-3 px-4 bg-gradient-to-r from-cyan-500 via-indigo-600 to-purple-600 text-white font-bold text-sm rounded-xl shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/35 hover:opacity-95 active:scale-[0.98] transition-all duration-200 cursor-pointer"
+            disabled={loading}
+            className="w-full mt-2 py-3 px-4 bg-gradient-to-r from-cyan-500 via-indigo-600 to-purple-600 text-white font-bold text-sm rounded-xl shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/35 hover:opacity-95 active:scale-[0.98] transition-all duration-200 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            <Link href="/"> Sign Up</Link>
+            {loading ? "Creating Account..." : "Sign Up"}
           </button>
         </form>
 
@@ -234,7 +251,7 @@ const SignUp = () => {
           </div>
 
           <button
-            onClick={handlegoogle}
+            onClick={handleGoogle}
             type="button"
             className="w-full mt-3 flex items-center justify-center gap-3 py-2.5 px-4 bg-slate-900/90 hover:bg-slate-800 text-slate-200 border border-slate-800 hover:border-slate-700 font-semibold text-sm rounded-xl transition-all duration-200 active:scale-[0.98] cursor-pointer"
           >
