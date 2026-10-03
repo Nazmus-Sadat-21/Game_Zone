@@ -4,11 +4,9 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 
-
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
-
 
   const [formData, setFormData] = useState({
     name: "",
@@ -215,15 +213,14 @@ const SignUp = () => {
           </div>
 
           {/* Signup Button */}
-          <Link href="/">
-            <button
-              onClick={handleSubmit}
-              type="submit"
-              className="w-full mt-2 py-3 px-4 bg-gradient-to-r from-cyan-500 via-indigo-600 to-purple-600 text-white font-bold text-sm rounded-xl shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/35 hover:opacity-95 active:scale-[0.98] transition-all duration-200 cursor-pointer"
-            >
-              Sign Up
-            </button>
-          </Link>
+
+          <button
+            onClick={handleSubmit}
+            type="submit"
+            className="w-full mt-2 py-3 px-4 bg-gradient-to-r from-cyan-500 via-indigo-600 to-purple-600 text-white font-bold text-sm rounded-xl shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/35 hover:opacity-95 active:scale-[0.98] transition-all duration-200 cursor-pointer"
+          >
+            <Link href="/"> Sign Up</Link>
+          </button>
         </form>
 
         {/* Signup with Google */}

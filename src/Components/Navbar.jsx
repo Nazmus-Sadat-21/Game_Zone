@@ -99,8 +99,8 @@ export default function Navbar() {
               <Image
                 src="/logo.jpg"
                 alt="Game Zone Logo"
-                width={32}
-                height={32}
+                width={30}
+                height={30}
                 className="rounded-lg object-cover w-7 h-7 sm:w-9 sm:h-9"
               />
             </div>
