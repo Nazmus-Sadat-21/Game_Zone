@@ -1,6 +1,7 @@
 "use client";
 
 import { useSession, signOut } from "@/lib/auth-client";
+import { redirect } from "next/dist/server/api-utils";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -15,15 +16,16 @@ export default function Navbar() {
   const handleSignOut = async () => {
     try {
       await signOut();
+      
     } catch (error) {
       console.error("Sign out error:", error);
     }
+   
   };
 
   return (
     <div className="sticky top-0 z-50 w-full border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-md text-slate-100 shadow-lg shadow-cyan-500/5">
       <div className="navbar max-w-7xl mx-auto px-2.5 sm:px-6 lg:px-8 flex justify-between items-center">
-        
         {/* Navbar Start: Logo & Mobile Menu */}
         <div className="navbar-start flex items-center gap-1 sm:gap-2 w-auto">
           {/* Mobile Dropdown */}
@@ -156,11 +158,36 @@ export default function Navbar() {
           {session?.user ? (
             <div className="flex items-center gap-2 sm:gap-3">
               {/* Glass User Badge: Phone = Avatar ring only, Tablet/Desktop = Pill with Name */}
-              <div className="flex items-center gap-2 rounded-full border-0 sm:border sm:border-cyan-500/20 bg-transparent sm:bg-slate-900/60 p-0 sm:px-3 sm:py-1.5 backdrop-blur-md sm:shadow-sm sm:shadow-cyan-500/10">
-                {/* Initial Avatar Circle (Always Visible) */}
-                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-tr from-cyan-500 to-fuchsia-600 text-xs sm:text-sm font-bold text-white shadow-md shadow-cyan-500/20 ring-2 ring-cyan-500/40 sm:ring-0 shrink-0">
-                  {userInitial}
-                </div>
+              <Link href={"/profile"}>
+              <div className="cursor-pointer flex items-center gap-2 rounded-full border-0 sm:border sm:border-cyan-500/20 bg-transparent sm:bg-slate-900/60 p-0 sm:px-3 sm:py-1.5 backdrop-blur-md sm:shadow-sm sm:shadow-cyan-500/10">
+                {session?.user.image ? (
+                  // ******************** EYE-CATCHING IMAGE SECTION ********************
+                  // A relative container for complex layering and glows
+                  <div className="relative group/avatar h-9 w-9 sm:h-10 sm:w-10 shrink-0 transition-transform duration-300 hover:scale-110">
+                    <div className="absolute inset-0 rounded-full border-[3px] border-cyan-400 p-0.5 shadow-[0_0_20px_rgba(6,182,212,0.8),_0_0_4px_rgba(255,255,255,0.4)]">
+                      {/* 2. Optimized, High-Resolution Avatar Image */}
+                      <Image
+                        src={session.user.image}
+                        alt={session.user.name || "User Avatar"}
+                        // Use 'fill' inside a relative container for perfect scaling
+                        fill
+                        className="h-full w-full rounded-full object-cover border-2 border-black/50"
+                        priority // Prioritize loading as it's a critical navigation element
+                      />
+                    </div>
+
+                    {/* 3. Outer Fuchsia Neon Pulse Ring (Hidden by default, shown on group hover) */}
+                    <div className="absolute inset-[-4px] rounded-full ring-2 ring-fuchsia-600/80 ring-offset-2 ring-offset-black/20 opacity-0 group-hover/avatar:opacity-100 transition-opacity duration-300"></div>
+
+                    {/* 4. Tiny "Active Status" Indicator - Green Neon dot */}
+                    <div className="absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full border-2 border-slate-950 bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]"></div>
+                  </div>
+                ) : (
+                  // ********************************************************************
+                  <div className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-gradient-to-tr from-cyan-500 to-fuchsia-600 text-xs sm:text-sm font-bold text-white shadow-md shadow-cyan-500/20 ring-2 ring-cyan-500/40 sm:ring-0 shrink-0">
+                    {userInitial}
+                  </div>
+                )}
 
                 {/* Welcome Subtitle & Name (Hidden on phone `< sm`, shown on `sm:flex`) */}
                 <div className="hidden sm:flex flex-col text-left leading-tight">
@@ -172,14 +199,17 @@ export default function Navbar() {
                   </span>
                 </div>
               </div>
+              </Link>
 
               {/* Sign Out Action Button */}
+              <Link href={"/SignIn"}>
               <button
                 onClick={handleSignOut}
                 className="cursor-pointer rounded-xl border border-slate-700/60 bg-slate-900/80 px-2.5 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-semibold text-slate-300 backdrop-blur-md transition-all duration-300 hover:border-rose-500/40 hover:bg-rose-500/10 hover:text-rose-400 active:scale-95 shrink-0"
               >
                 Sign Out
               </button>
+              </Link>
             </div>
           ) : (
             <Link
@@ -190,7 +220,6 @@ export default function Navbar() {
             </Link>
           )}
         </div>
-
       </div>
     </div>
   );

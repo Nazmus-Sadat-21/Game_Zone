@@ -1,6 +1,6 @@
 "use client";
 
-import { signIn, signUp, useSession } from "@/lib/auth-client";
+import { signIn, signUp } from "@/lib/auth-client";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
@@ -11,7 +11,7 @@ const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [loading, setLoading] = useState(false);
-  const { data: session } = useSession();
+
 
   const [formData, setFormData] = useState({
     name: "",

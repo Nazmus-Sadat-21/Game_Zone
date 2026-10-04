@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<div align="center">
 
-## Getting Started
+# 🎮 GAME ZONE
 
-First, run the development server:
+**The Ultimate High-Performance Gaming Platform**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+A modern, full-stack web application built for gamers. Featuring dynamic game discovery, seamless authentication, interactive purchasing flows, and an immersive cyber-neon dark interface.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+[Features](#-key-features) • [Tech Stack](#-tech-stack) • [Getting Started](#-getting-started) • [Project Structure](#-project-structure) • [Environment Variables](#-environment-variables)
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+</div>
 
-## Learn More
+## 🌟 Key Features
 
-To learn more about Next.js, take a look at the following resources:
+- **⚡ Modern App Router Architecture**: Built with Next.js App Router for optimal server-side performance, routing, and instant page transitions.
+- **🔐 Session-Based Authentication**: Powered by `better-auth` for secure, frictionless login, signup, and active session management.
+- **🎨 Sleek Cyberpunk UI/UX**: High-contrast dark theme styled with Tailwind CSS, DaisyUI components, and glowing cyan/fuchsia gradient accents.
+- **📱 Fully Responsive Design**: Mobile-first navigation with clean dynamic drawers, adaptive user avatars, and desktop layouts.
+- **🛒 Interactive Purchase Flows**: Dynamic routing with context-driven state management for smooth item additions and checkouts.
+- **🔔 Real-time Notifications**: Integrated `react-toastify` toast system providing instant feedback on user actions and system state changes.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🛠 Tech Stack
 
-## Deploy on Vercel
+| Category | Technology | Description |
+| :--- | :--- | :--- |
+| **Framework** | [Next.js](https://nextjs.org/) | React framework with App Router & Server Components |
+| **Styling** | [Tailwind CSS](https://tailwindcss.com/) & [DaisyUI](https://daisyui.com/) | Utility-first CSS framework with UI components |
+| **Authentication** | [better-auth](https://better-auth.com/) | Modern session management & user auth |
+| **Database** | [MongoDB](https://www.mongodb.com/) | NoSQL database for games, users, and transactions |
+| **State & Context** | React Context API | Global state management via `GameContext` |
+| **Icons & Typography** | Geist & Geist Mono | Next.js Google Fonts optimization |
+| **Notifications** | [React Toastify](https://fkhadra.github.io/react-toastify/) | Customizable toast alerts |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🚀 Getting Started
+
+Follow these steps to run the project locally on your machine.
+
+### Prerequisites
+
+Ensure you have the following installed:
+- **Node.js** (v18.x or higher)
+- **npm**, **yarn**, or **pnpm**
+- **MongoDB** instance (local or MongoDB Atlas cluster)
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone [https://github.com/your-username/game-zone.git](https://github.com/your-username/game-zone.git)
+   cd game-zone
