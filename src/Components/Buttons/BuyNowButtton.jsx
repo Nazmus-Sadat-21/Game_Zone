@@ -30,11 +30,11 @@ const BuyNowButton = ({ game, finalAmount }) => {
       <button
         onClick={handleButton}
         disabled={isProcessing}
-        className="w-full py-4 rounded-2xl bg-gradient-to-r from-cyan-500 via-purple-600 to-fuchsia-600 hover:from-cyan-400 hover:to-fuchsia-500 text-white font-black text-xs uppercase tracking-[0.2em] shadow-[0_0_25px_rgba(6,182,212,0.4)] hover:shadow-[0_0_35px_rgba(217,70,239,0.6)] hover:scale-[1.01] active:scale-[0.98] disabled:opacity-50 transition-all flex items-center justify-center gap-2"
+        className="cursor-pointer w-full py-4 rounded-2xl bg-gradient-to-r from-cyan-500 via-purple-600 to-fuchsia-600 hover:from-cyan-400 hover:to-fuchsia-500 text-white font-black text-xs uppercase tracking-[0.2em] shadow-[0_0_25px_rgba(6,182,212,0.4)] hover:shadow-[0_0_35px_rgba(217,70,239,0.6)] hover:scale-[1.01] active:scale-[0.98] disabled:opacity-50 transition-all flex items-center justify-center gap-2"
       >
         {isProcessing ? (
           <>
-            <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+            <div className=" w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
             PROCESSING TRANSACTION...
           </>
         ) : (

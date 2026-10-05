@@ -106,9 +106,9 @@ const BuyNowCard = ({ game }) => {
         {/* Top Header Bar */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 pb-4 border-b border-slate-800/80">
           <Link
-            href={`/BuyNow/${game.gameId}`}
+            href={`/`}
             onClick={() => setIsPurchased(false)}
-            className="text-xs font-mono uppercase tracking-widest text-cyan-400 hover:text-cyan-300 flex items-center gap-2 transition-all hover:-translate-x-1 w-fit"
+            className="cursor-pointer text-xs font-mono uppercase tracking-widest text-cyan-400 hover:text-cyan-300 flex items-center gap-2 transition-all hover:-translate-x-1 w-fit"
           >
             ← RETURN TO GAME STORE
           </Link>
@@ -153,7 +153,7 @@ const BuyNowCard = ({ game }) => {
                 </div>
                 <button
                   onClick={handleCopyKey}
-                  className="w-full sm:w-auto px-4 py-2 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/40 text-cyan-400 text-xs font-mono font-bold tracking-wider transition-all active:scale-95 shrink-0"
+                  className="cursor-pointer w-full sm:w-auto px-4 py-2 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/40 text-cyan-400 text-xs font-mono font-bold tracking-wider transition-all active:scale-95 shrink-0"
                 >
                   {copiedKey ? "✓ COPIED!" : "COPY KEY"}
                 </button>
@@ -163,14 +163,14 @@ const BuyNowCard = ({ game }) => {
                 <Link
                   onClick={() => setIsPurchased(false)}
                   href="/purches"
-                  className="py-3.5 px-4 rounded-2xl bg-gradient-to-r from-cyan-500 to-fuchsia-600 hover:from-cyan-400 hover:to-fuchsia-500 text-white font-black text-xs uppercase tracking-wider shadow-[0_0_20px_rgba(6,182,212,0.4)] transition-all flex items-center justify-center"
+                  className="cursor-pointer py-3.5 px-4 rounded-2xl bg-gradient-to-r from-cyan-500 to-fuchsia-600 hover:from-cyan-400 hover:to-fuchsia-500 text-white font-black text-xs uppercase tracking-wider shadow-[0_0_20px_rgba(6,182,212,0.4)] transition-all flex items-center justify-center"
                 >
                   VIEW IN DATA CORE
                 </Link>
                 <Link
                   onClick={() => setIsPurchased(false)}
                   href="/"
-                  className="py-3.5 px-4 rounded-2xl bg-slate-900 hover:bg-slate-800 text-slate-300 font-bold text-xs uppercase tracking-wider border border-slate-700 transition-colors flex items-center justify-center"
+                  className="cursor-pointer py-3.5 px-4 rounded-2xl bg-slate-900 hover:bg-slate-800 text-slate-300 font-bold text-xs uppercase tracking-wider border border-slate-700 transition-colors flex items-center justify-center"
                 >
                   BROWSE MORE GAMES
                 </Link>
