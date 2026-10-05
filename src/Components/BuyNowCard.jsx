@@ -460,7 +460,7 @@ const BuyNowCard = ({ game }) => {
 
                 {/* Confirm & Purchase Trigger Button */}
 
-                <BuyNowButton game={game}></BuyNowButton>
+                <BuyNowButton game={game} finalAmount={finalTotal}></BuyNowButton>
 
                 <p className="text-[9px] font-mono text-slate-500 text-center mt-4">
                   BY CLICKING CONFIRM, YOU AGREE TO GAME ZONE TERMS OF SERVICE.

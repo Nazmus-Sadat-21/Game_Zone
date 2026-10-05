@@ -1,12 +1,15 @@
 "use client";
-
 import { useSession, signOut } from "@/lib/auth-client";
 import { redirect } from "next/dist/server/api-utils";
 import Image from "next/image";
 import Link from "next/link";
+import { useContext } from "react";
+import { GameContext } from "@/context/GameContext";
 
 export default function Navbar() {
   const { data: session } = useSession();
+  const { fav, setFav } = useContext(GameContext);
+  const { buy, setBuy } = useContext(GameContext);
 
   // Get user initial for avatar badge
   const userInitial = session?.user?.name
@@ -16,11 +19,14 @@ export default function Navbar() {
   const handleSignOut = async () => {
     try {
       await signOut();
+      setFav([])
+      setBuy([])
     } catch (error) {
       console.error("Sign out error:", error);
     }
   };
 
+  
   return (
     <div className="sticky top-0 z-50 w-full border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-md text-slate-100 shadow-lg shadow-cyan-500/5">
       <div className="navbar max-w-7xl mx-auto px-2.5 sm:px-6 lg:px-8 flex justify-between items-center">

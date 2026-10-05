@@ -4,7 +4,7 @@ import { GameContext } from "@/context/GameContext";
 import React, { useContext, useState } from "react";
 import { toast } from "react-toastify";
 
-const BuyNowButton = ({ game }) => {
+const BuyNowButton = ({ game, finalAmount }) => {
   const { gameName } = game;
   const { buy, setBuy } = useContext(GameContext);
   const { isProcessing, setIsProcessing } = useContext(GameContext);
@@ -38,7 +38,7 @@ const BuyNowButton = ({ game }) => {
             PROCESSING TRANSACTION...
           </>
         ) : (
-          `CONFIRM & PAY`
+          `CONFIRM & PAY ${finalAmount}`
         )}
       </button>
     </div>
