@@ -4,12 +4,13 @@ import Link from "next/link";
 import BuyButton from "@/Components/Buttons/BuyButton";
 import FavButton from "@/Components/Buttons/FavButton";
 
-
 const GameData = async () => {
-  
-  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/GameData.json`, {
-    cache: "no-store", // Prevents stale caching during development
-  });
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/GameData.json`,
+    {
+      cache: "no-store", // Prevents stale caching during development
+    },
+  );
 
   if (!res.ok) {
     throw new Error("Failed to fetch game data");
@@ -19,7 +20,6 @@ const GameData = async () => {
 };
 
 const DetailsPage = async ({ params }) => {
-  
   const { GameID } = await params;
   const data = await GameData();
 
@@ -223,14 +223,12 @@ const DetailsPage = async ({ params }) => {
               </div>
 
               <div className="flex gap-3">
-              
-                  <FavButton game={Game}></FavButton>
+                <FavButton game={Game}></FavButton>
                 {/* </Link> */}
+                <Link href={`/BuyNow/${GameID}`}>
+                  <BuyButton></BuyButton>
+                </Link>
 
-                 <BuyButton game={Game}></BuyButton>
-                
-                 
-                  
                 {/* </Link> */}
               </div>
             </div>
